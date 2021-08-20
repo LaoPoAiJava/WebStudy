@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <button>确定</button>
+
+
+    <script>
+        var that;
+
+        // 如果类中要选择html元素，那么script要写在html元素后面
+        class Star {
+            constructor(uname, age) {
+                that = this;
+                this.uname = uname;
+                this.age = age;
+
+                // 构造函数调用类方法
+                // this.sing; // sing方法不会执行
+                // this.sing(); // sing方法会执行
+
+                // 选择button按钮
+                this.btn = document.querySelector("button");
+
+                // this.sing不能加括号，如果加上了括号就直接调用了sing方法
+                // this.btn.onclick = this.sing();
+
+                // 点击button按钮调用sing方法
+                // 但是点击了btn后，会输出undefined
+                // 引文当点击了btn后，this关键字指向了button对象，不再是指向实例化的对象
+                // 解决方式：在外部声明一个全局变量that,当调用构造函数时，
+                //          将实例化的对象赋值给that，然后sing方法中都用that.xxx
+                this.btn.onclick = this.sing;
+
+            }
+
+            sing() {
+                console.log(that.uname);
+            }
+        }
+
+        var star = new Star("刘德华", 18);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        class Father {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            sum() {
+                console.log(this.x + this.y);
+            }
+        }
+
+        class Son extends Father {
+            constructor(x, y) {
+                // 子类调用父类的方法，需要使用super关键字，并且必须在最前面。
+                super(x, y);
+                this.x = x;
+                this.y = y;
+            }
+
+            // 子类扩展的方法：减法
+            subtract(x, y) {
+                console.log(this.x - this.y);
+            }
+        }
+
+        var son = new Son(10, 10);
+        son.subtract();
+        son.sum();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

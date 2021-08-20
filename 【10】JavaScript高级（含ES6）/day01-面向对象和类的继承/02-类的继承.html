@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 父类
+        class Father {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            sum() {
+                console.log(this.x + this.y);
+            }
+        }
+
+        // 子类
+        // extends关键字继承父类
+        class Son extends Father {
+            constructor(x, y) {
+                // super关键字调用父类的构造函数
+                super(x, y);
+            }
+        }
+
+        var s = new Son(1, 2);
+        s.sum();
+    </script>
+</head>
+
+
+<body>
+
+</body>
+
+</html>

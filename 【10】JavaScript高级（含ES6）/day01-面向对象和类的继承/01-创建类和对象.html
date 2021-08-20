@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 声明一个类
+        class Star {
+            // 构造函数
+            constructor(uname, age) {
+                this.uname = uname;
+                this.age = age;
+            }
+
+            // 类里面的函数不需要加function
+            sing() {
+                console.log("唱歌");
+            }
+        }
+
+        // 实例化一个star类
+        var ldh = new Star("刘德华", 18);
+        console.log(ldh);
+        ldh.sing();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

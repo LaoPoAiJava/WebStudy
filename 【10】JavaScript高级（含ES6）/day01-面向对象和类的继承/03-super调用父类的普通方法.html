@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        class Father {
+            say() {
+                return "我是爸爸";
+            }
+        }
+
+        class Son extends Father {
+            say() {
+                // 通过super关键字调用父类的普通方法
+                console.log(super.say() + "的儿子");
+            }
+        }
+
+        // 实例化
+        var son = new Son();
+        son.say();
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
