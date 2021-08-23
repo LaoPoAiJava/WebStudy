@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // Object.defineProperty(obj, prop, descriptor)
+        // obj： 必需。 目标对象
+        // prop： 必需。 需定义或修改的属性的名字
+        // descriptor： 必需。 目标属性所拥有的特性
+
+        /*
+        Object.defineProperty() 第三个参数 descriptor 说明：  
+            value: 设置属性的值,默认值为undefined
+            writable: 值是否可以重写。true | false(默认值)
+            enumerable: 目标属性是否可以被枚举。true | false(默认值)
+            configurable: 目标属性是否可以被删除或是否可以再次修改特性 true | false(默认值)
+        */
+        var obj = {
+            id: 1,
+            price: 1000
+        }
+
+        // 案例1：
+        // 设置属性和值
+        // Object.defineProperty(obj, "num", {
+        //     value: 1000
+        // });
+
+        // 案例2：
+        // 不允许修改这个属性
+        // Object.defineProperty(obj, "id", {
+        //     writable: false
+        // });
+
+        // obj.id = 2; // 没有作用
+        // console.log(obj);
+
+        // 案例3：
+        // Object.defineProperty(obj, "address", {
+        //     value: "山东蓝翔学院1单元"
+        // });
+
+        // 遍历obj对象
+        // num,address无法被遍历
+        // 因为enumerable的值为false
+        // console.log(Object.keys(obj));
+
+        // 案例3：
+        // Object.defineProperty(obj, "address", {
+        //     value: "山东蓝翔学院1单元",
+        //     enumerable: true // 可以被枚举
+        // });
+        // console.log(Object.keys(obj));
+
+        // 案例4：configurable
+        Object.defineProperty(obj, "address", {
+            value: "天涯海角",
+            // 设置为true就能修改了
+            configurable: true
+        });
+        console.log(obj);
+
+        // 修改address的值
+        // 结果：不允许修改
+        Object.defineProperty(obj, "address", {
+            value: "桂林山水"
+        });
+        console.log(obj);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

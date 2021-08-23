@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Person对象
+        function Person(uname, age) {
+            this.uname = uname;
+            this.age = age;
+        }
+
+        // console.log(Person);
+
+        // 情况1：
+        // Person.prototype.eat = function() {
+        //     console.log("我会吃饭");
+        // }
+
+        // var ldh = new Person("刘德华", 18);
+        // console.log(ldh.__proto__); // 存在constructor构造函数
+        // console.log(Person.prototype); // 存在constructor构造函数
+        // console.log(ldh.__proto__.constructor); // constructor指向的是Person类
+        // console.log(Person.prototype.constructor); // constructor指向的是Person类
+
+        // 情况2：
+        // Person.prototype = {
+        //     eat: function() {
+        //         console.log("吃饭饭");
+        //     },
+
+        //     sing: function() {
+        //         console.log("唱个歌");
+        //     }
+        // };
+        // var ldh = new Person("刘德华", 18);
+        // console.log(ldh.__proto__); // 存在prototype对象
+        // console.log(Person.prototype); // 存在prototype对象
+        // console.log(ldh.__proto__.constructor); // prototype把构造函数覆盖了
+        // console.log(Person.prototype.constructor); // prototype把构造函数覆盖了
+
+        // 解决情况2：
+        // 把prototype对象中构造函数重新指向Person对象
+        Person.prototype = {
+            constructor: Person,
+            eat: function() {
+                console.log("吃饭饭");
+            },
+
+            sing: function() {
+                console.log("唱个歌");
+            }
+        };
+        var ldh = new Person("刘德华", 18);
+        console.log(ldh.__proto__.constructor); // prototype把构造函数覆盖了
+        console.log(Person.prototype.constructor); // prototype把构造函数覆盖了
+    </script>
+</head>
+
+
+
+<body>
+
+</body>
+
+</html>

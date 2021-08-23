@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 构造函数
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        var that;
+
+        // 原型对象
+        Person.prototype.eat = function() {
+            console.log("吃饭饭");
+            that = this;
+        }
+
+        var p = Person("刘德华", 18);
+        console.log(that === p); // true
+        // 结论：原型对象函数里的this，指向的是实例化对象
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

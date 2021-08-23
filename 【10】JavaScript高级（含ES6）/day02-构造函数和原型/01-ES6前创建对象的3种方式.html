@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // ES6以前.创建对象的3中方式
+        // 1. 对象字面量创建
+        var obj = {};
+        // 2. new Object
+        var obj2 = new Object();
+        // 3.自定义构造函数
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+
+            this.eat = function() {
+                console.log("吃饭饭");
+            }
+        }
+        var person = new Person("刘德华", 18);
+        person.eat();
+
+        // 1.实例成员就是构造函数内部通过this添加的成员 uname age eat 就是实例成员
+        // 实例成员只能通过实例化的对象来访问
+        console.log(person.name);
+        person.eat();
+        // 2. 静态成员 在构造函数本身上添加的成员  sex 就是静态成员
+        SPersontar.sex = '男';
+        // 静态成员只能通过构造函数来访问
+        console.log(Star.sex);
+        // console.log(ldh.sex); // 不能通过对象来访问,错误
+    </script>
+</head>
+
+
+<body>
+
+</body>
+
+</html>

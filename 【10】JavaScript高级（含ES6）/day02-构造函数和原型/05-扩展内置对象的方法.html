@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 需求:为Array对象自定义一个sum求和方法
+        Array.prototype.sum = function() {
+            var sum = 0;
+            for (var i = 0; i < this.length; i++) {
+                sum += this[i];
+            }
+            return sum;
+        }
+
+        // 这种写法会报错！
+        // Array.prototype = {
+        //     sum: function() {
+        //         var sum = 0;
+        //         for (var i = 0; i < this.length; i++) {
+        //             sum += this[i];
+        //         }
+        //         return sum;
+        //     }
+        // }
+
+        var arr = [1, 2, 3, 4];
+        console.log(arr.sum());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

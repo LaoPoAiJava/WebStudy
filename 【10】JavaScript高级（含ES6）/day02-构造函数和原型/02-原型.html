@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function Star(uname, age) {
+            this.uname = uname;
+            this.age = age;
+
+            this.eat = function() {
+                console.log("我会吃饭！");
+            }
+        }
+
+        // 原型
+        /*
+        JavaScript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象。
+        这个 prototype 就是一个对象，这个对象的所有属性和方法，都会被构造函数所拥有。
+
+        原型对象声明的方法，被所有对象所共享。
+        */
+        Star.prototype.sing = function() {
+            console.log("我会唱歌！");
+        }
+
+        var liudehua = new Star("刘德华", 18);
+        var zhangxueyou = new Star("张学友", 19);
+
+        // 类中的方法进行对比
+        console.log(liudehua.eat === zhangxueyou.eat); // false
+
+        // 原型对象作对比
+        console.log(liudehua.sing === zhangxueyou.sing); // true
+
+        // JavaScript的每一个对象都会有一个属性__proto__,并指向构造函数(类)的prototype原型对象.
+        console.log(liudehua.__proto__ === Star.prototype); // true
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

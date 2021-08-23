@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 需求:找出arr数组中大于30的数
+        arr = [55, 22, 88, 66];
+
+        // function的参数用到就写，没用到可以不写
+        // filter():返回一个新的数组,新数组中的元素是指定数组中符合条件的元素,
+        // 主要用于筛选数组
+        var newArr = arr.filter(function(value, index) {
+            return value > 30;
+        });
+        console.log(newArr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
