@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 1. call()
+        // var obj = {
+        //     name: "andy"
+        // }
+
+        // function fun() {
+        //     console.log(this);
+        // }
+        // fun(); // this指向window对象
+        // fun.call(obj); // this指向的obj对象
+
+        // call()主要可以用来实现继承,并改变函数内的this指向
+        function Father(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        function Son(name, age) {
+            // this指向了Son
+            Father.call(this, name, age);
+        }
+
+        var son = new Son("刘德华", 18);
+        console.log(son);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>确认</button>
+    <script>
+        // var obj = {
+        //     name: "andy"
+        // }
+
+        // function fun() {
+        //     console.log(this);
+        // }
+
+        // // 1. bind()不会调用函数
+        // // 2. bind改变了this指向以后,赋值给新的函数
+        // var newFun = fun.bind(obj);
+        // newFun(); // 此时this指向了obj对象
+
+        // 3. 如果有的函数我们不需要立即调用,但是又想改变这个函数内部的this指向此时用bind
+        // 4. 我们有一个按钮,当我们点击了之后,就禁用这个按钮,2秒钟之后开启这个按钮
+        var btn = document.querySelector("button");
+        btn.onclick = function() {
+            this.disabled = true; // 禁止点击
+            setInterval(function() {
+                this.disabled = false; // 恢复点击
+            }.bind(this), 2000);
+        }
+    </script>
+</body>
+
+</html>

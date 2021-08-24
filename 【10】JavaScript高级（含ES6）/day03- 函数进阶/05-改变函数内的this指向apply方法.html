@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // var obj = {
+        //     name: "andy"
+        // }
+
+        // function fun(arr) {
+        //     console.log(this);
+        //     console.log(arr); // 只取arr数组的第一个元素
+        // }
+        // arr = ["green", "pink", "blue"];
+        // fun.apply(obj, arr);
+
+        arr2 = [1, 6, 33];
+        var max = Math.max.apply(Math, arr2); // this指向了Math
+        console.log(max);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 函数的调用方式
+
+        // 1. 普通函数
+        function fun() {
+            console.log("哈哈哈");
+        };
+        // fun();
+        // fun.call();
+
+        // 2. 对象的方法
+        var obj = {
+            say: function() {
+                console.log("say");
+            }
+        };
+        // obj.say();
+
+        // 3. 构造函数
+        function Star() {
+
+        };
+        // new Star();
+
+        // 4. 绑定事件函数
+        // btn.onclick = function() {};
+
+        // 5. 定时器函数
+        setInterval(function() {}, 1000);
+
+        // 6. 立即执行函数
+        // 立即执行函数是自动调用
+        (function() {
+            console.log("now");
+        })()
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

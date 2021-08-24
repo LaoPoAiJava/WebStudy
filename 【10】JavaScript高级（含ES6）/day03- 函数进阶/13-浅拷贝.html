@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <script>
+        // 浅拷贝:如果遇到复杂的数据类型(如对象),指拷贝对象的地址.
+        // var obj = {
+        //     id: 1,
+        //     name: "hey",
+        //     msg: {
+        //         age: 18
+        //     }
+        // }
+
+        // var o = {};
+        // for (var key in obj) {
+        //     o[key] = obj[key];
+        // }
+        // console.log(o);
+
+        // // 如果修改了o中age的值,那么obj中age的值也会修改.
+        // // 因为o和obj对象的msg属性名储存着msg对象的地址.
+        // o.msg.age = 99;
+        // console.log(obj);
+
+        // es6中新增的浅拷贝方法:assign()
+        // 参数1:将要拷贝到的对象.
+        // 参数2:source源对象.
+        // Object.assign(o, obj);
+        // console.log(o);
+    </script>
+</body>
+
+</html>

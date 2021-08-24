@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <style>
+        div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        function fun(a, b, callback) {
+            console.log(a + b);
+            callback && callback();
+        }
+
+        fun(1, 2, function() {
+            console.log("我是高阶函数");
+        });
+
+        // 元素必须有定位属性才能使用animate(对象,函数)
+        $("div").animate({
+            left: 500
+        }, function() {
+            $("div").css("backgroundColor", "blue");
+        });
+    </script>
+</body>
+
+</html>

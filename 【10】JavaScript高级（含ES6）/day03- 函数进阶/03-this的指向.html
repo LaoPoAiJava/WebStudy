@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <button>按钮</button>
+    <script>
+        // 函数的调用方式
+
+        // 1. 普通函数
+        // this指向window
+        // function fun() {
+        //     console.log("普通函数的this指向：" + this);
+        // };
+        // fun();
+        // fun.call();
+
+        // 2. 对象的方法
+        // this指向obj对象
+        // var obj = {
+        //     say: function() {
+        //         console.log("对象的方法的this指向：" + this);
+        //     }
+        // };
+        // obj.say();
+
+        // 3. 构造函数
+        // this指向s这个实例化的对象
+        // function Star(name) {
+        //     this.name = name;
+        //     this.eat = function() {
+        //         console.log(this.name);
+        //         console.log("构造函数this指向：" + this);
+        //     }
+        // };
+        // var s = new Star("lkj");
+        // s.eat();
+
+        // 4. 绑定事件函数
+        // this指向的是btn这个按钮对象
+        // var btn = document.querySelector("button");
+        // btn.onclick = function() {
+        //     console.log("绑定事件函数this指向：" + this);
+        // };
+
+        // 5. 定时器函数
+        // this指向的是window对象
+        // window.setInterval(function() {
+        //     console.log("定时器函数this指向：" + this);
+        // }, 1000);
+
+        // 6. 立即执行函数
+        // 立即执行函数是自动调用
+        // this指向的是window对象
+        // (function() {
+        //     console.log("now");
+        // })()
+    </script>
+</body>
+
+</html>
