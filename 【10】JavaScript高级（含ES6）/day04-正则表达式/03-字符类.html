@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // []:表示有一系列字符可供选择，只要匹配其中一个就可以了.
+        // [^]:方括号内部^是取反符.
+        // 案例1:包含a或b或c其中任意一个都返回true.
+        var reg1 = /[abc]/;
+        console.log(reg1.test("as")); // true
+        console.log(reg1.test("sb")); // true
+        console.log(reg1.test("cscs")); // true
+        console.log('---------------------------');
+        // 案例2:字符串只有是a或b或c其中一个才符合条件
+        var reg2 = /^[abc]$/;
+        console.log(reg2.test("as")); // false
+        console.log(reg2.test("sb")); // false
+        console.log(reg2.test("cscs")); // false
+        console.log(reg2.test("abc")); // false
+        console.log(reg2.test("a")); // true
+        console.log('---------------------------');
+        // 案例3:字符串只有是a-z其中一个才符合条件
+        var reg3 = /^[a-z]$/;
+        console.log(reg3.test("b")); // true
+        console.log(reg3.test("12b")); // false
+        console.log('---------------------------');
+        // 案例4:字符串只有是a-zA-Z0-9_-其中一个才符合条件
+        var reg4 = /^[a-zA-Z0-9_-]$/;
+        console.log(reg4.test("b")); // true
+        console.log(reg4.test("N")); // true
+        console.log(reg4.test("5")); // true
+        console.log(reg4.test("_")); // true
+        console.log(reg4.test("-")); // true
+        console.log(reg4.test("*")); // false
+        console.log('---------------------------');
+        // 案例5:字符串除了a-zA-Z0-9_-其中一个才符合条件
+        var reg5 = /^[^a-zA-Z0-9_-]$/;
+        console.log(reg5.test("b")); // false
+        console.log(reg5.test("N")); // false
+        console.log(reg5.test("5")); // false
+        console.log(reg5.test("_")); // false
+        console.log(reg5.test("-")); // false
+        console.log(reg5.test("*")); // true
+        console.log(reg5.test("aa")); // false
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

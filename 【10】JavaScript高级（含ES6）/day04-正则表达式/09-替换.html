@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            width: 300px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="message"></textarea> <button>提交</button>
+    <div></div>
+
+    <script>
+        // 获取元素
+        var text = document.querySelector("#message");
+        var btn = document.querySelector("button");
+        var div = document.querySelector("div");
+
+        // 替换
+        btn.onclick = function() {
+            div.innerHTML = text.value.replace(/激情|gay/g, "*");
+        }
+
+        // g:全局匹配
+        // i:忽略大小写
+        // gi:全局匹配 + 忽略大小写
+    </script>
+</body>
+
+</html>

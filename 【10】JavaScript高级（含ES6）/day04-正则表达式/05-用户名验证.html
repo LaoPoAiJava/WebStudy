@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .right {
+            color: green;
+        }
+        
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="uname"> <span>请输入用户名</span>
+
+    <script>
+        // 正则表达式
+        var reg = /^[a-zA-z0-9_-]{6,16}$/;
+
+        // 判断uname的值是否符合条件
+        var uname = document.querySelector(".uname");
+        var span = document.querySelector("span");
+        // 当文本框失去焦点时
+        uname.onblur = function() {
+            if (reg.test(uname.value)) {
+                span.className = "right";
+                span.innerHTML = "用户名合法";
+            } else {
+                span.className = "wrong";
+                span.innerHTML = "用户名不合法";
+            }
+        }
+    </script>
+</body>
+
+</html>

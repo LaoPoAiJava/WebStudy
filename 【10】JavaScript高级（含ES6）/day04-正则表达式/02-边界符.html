@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 边界符 
+        // ^:开头
+        // &:结尾
+
+        // 案例1:只要包含abc的字符串都符合要求.
+        var reg1 = /abc/;
+        console.log(reg1.test('abc')); // true
+        console.log(reg1.test('abcd')); // true
+        console.log(reg1.test('aabcd')); // true
+        console.log(reg1.test('aababc')); // true
+        console.log('---------------------------');
+        // 案例2:以abc开头的字符串都符合要求
+        var reg2 = /^abc/;
+        console.log(reg2.test('abc')); // true
+        console.log(reg2.test('abcd')); // true
+        console.log(reg2.test('aabcd')); // false
+        console.log(reg2.test('aababc')); // false
+        console.log('---------------------------');
+        // 案例3:以abc结尾的字符串都符合要求
+        var reg3 = /abc$/;
+        console.log(reg3.test('abc')); // true
+        console.log(reg3.test('abcd')); // false
+        console.log(reg3.test('aaabc')); // true
+        console.log(reg3.test('aababc')); // true
+        console.log('---------------------------');
+        // 案例4:精确匹配是abc的字符串
+        var reg4 = /^abc$/;
+        console.log(reg4.test("abc")); // true
+        console.log(reg4.test("abcabc")); // false
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

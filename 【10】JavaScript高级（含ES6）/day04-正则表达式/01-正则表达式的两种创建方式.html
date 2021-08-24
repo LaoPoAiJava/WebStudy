@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 通过调用 RegExp 对象的构造函数创建
+        // test(str):用于检测字符串是否符合该规则,该对象会返回 true 或 false。
+        var reg = new RegExp(/123/);
+        console.log(reg.test(123)); // true
+        console.log(reg.test("abc")); // false
+
+        // 2. 通过字面量创建(推荐)
+        var reg2 = /123/;
+        console.log(reg2.test(123)); // true
+        console.log(reg2.test("abc")); // false
+    </script>
+</body>
+
+</html>
