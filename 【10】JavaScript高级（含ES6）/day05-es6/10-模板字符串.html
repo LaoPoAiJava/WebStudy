@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES6新增的创建字符串的方式，使用反引号定义。
+
+        // 作用1：可以解析变量。
+        // let name = "老王";
+        // let sayHello = `大家好，我是${name}`;
+        // console.log(sayHello);
+
+        // 作用2：可以换行
+        // const Person = {
+        //     name: "老王",
+        //     age: 88,
+        //     sex: "男"
+        // }
+
+        // let myHtml = `
+        // <div>
+        //     <span>${Person.name}</span>
+        //     <span>${Person.age}</span>
+        //     <span>${Person.sex}</span>
+        // </div`;
+
+        // console.log(myHtml);
+
+        // 作用3：可以调用函数。
+        const sayHello = () => {
+            return "大家好，我是老王，嘿嘿嘿";
+        }
+
+        let str = `调用函数：${sayHello()}`;
+        console.log(str);
+    </script>
+</body>
+
+</html>

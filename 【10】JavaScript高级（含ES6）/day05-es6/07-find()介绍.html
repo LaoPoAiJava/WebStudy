@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 定义数组
+        let arr = [{
+            id: 1,
+            name: "qq"
+        }, {
+            id: 2,
+            name: "ww"
+        }];
+
+        // 案例1
+        // 如果找不到数据，则返回undefined
+        let res = arr.find(item => item.id == 3);
+        console.log(res);
+    </script>
+</body>
+
+</html>

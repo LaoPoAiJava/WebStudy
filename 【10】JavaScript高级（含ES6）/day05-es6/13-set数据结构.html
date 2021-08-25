@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 创建set的方式
+        // const s = new Set();
+        // Set对象size属性表示对象中元素的个数
+        // let len = s.size;
+        // console.log(len); // 0
+
+        // set可以去重
+        // const s2 = new Set(["a", "b", "a", "c"]);
+        // console.log(s2.size); // 3
+        // let arr = [...s2];
+        // console.log(arr);
+
+        // set的常用方法
+        // 1. add(value)：添加某个值，返回 Set 结构本身
+        const set = new Set();
+        set.add("老王");
+        set.add("小王");
+        // console.log(set);
+
+        // 2.  delete(value)：删除某个值，返回一个布尔值，表示删除是否成功
+        // const b = set.delete("小王");
+        // console.log(b);
+
+        // 3. has(value)：返回一个布尔值，表示该值是否为 Set 的成员
+        // const b = set.has("老王");
+        // console.log(b);
+
+        // 4. clear()：清除所有成员，没有返回值
+        // set.clear();
+        // console.log(set);
+
+        // 5. 遍历set
+        // Set与数组一样，也拥有forEach方法，用于对每个成员执行某种操作，没有返回值。
+        set.forEach((item) => {
+            console.log(item);
+        });
+    </script>
+</body>
+
+</html>

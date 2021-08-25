@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 函数体中只有一句代码，且代码的执行结果就是返回值，可以省略大括号
+        // const fn = (n1, n2) => n1 + n2;
+        // let r = fn(1, 2);
+        // console.log(r);
+
+        // 如果形参只有一个，可以省略小括号
+        // const fn2 = v => {
+        //     alert(v);
+        // }
+        // fn2(123);
+
+        // 箭头函数不绑定this关键字，箭头函数中的this，指向的是函数定义位置的上下文this。
+
+        const obj = {
+            name: "jk"
+        }
+
+        function fn() {
+            console.log(this);
+            return () => {
+                console.log(this); // 指向的是fn
+            }
+        }
+        const s = fn.call(obj); // 改变this指向为obj对象
+        s();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

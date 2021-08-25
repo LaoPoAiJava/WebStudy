@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 定义一个伪数组
+        let arr = {
+            "0": "1",
+            "1": "2",
+            length: 2
+        };
+
+        // 案例1
+        let newArr = Array.from(arr);
+        console.log(newArr);
+
+        // 案例2
+        // 将arr里面得每一条数据取出，再操作
+        let newArr2 = Array.from(arr, (item) => item * 2);
+        console.log(newArr2);
+    </script>
+</body>
+
+</html>
