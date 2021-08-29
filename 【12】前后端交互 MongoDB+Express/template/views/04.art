@@ -1,0 +1,3 @@
+{{include "./common/head.art"}}
+{{msg}}
+{{include "./common/foot.art"}}

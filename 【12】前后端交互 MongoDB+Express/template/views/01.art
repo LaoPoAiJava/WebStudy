@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 标准语法 -->
+    {{ name }}
+    <!-- 这种写法不解析html标签 -->
+    {{ content }} 
+    <!-- 这种写法解析html标签 -->
+    {{@ content }}
+    <!-- 原始语法 -->
+    <%= name %>
+    <!-- 这种写法不解析html标签 -->
+    <%= content %>
+    <!-- 这种写法解析html标签 -->
+    <p><%- content %></p>
+</body>
+</html>
