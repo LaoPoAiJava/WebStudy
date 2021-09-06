@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/assets/bootstrap/dist/css/bootstrap.min.css">
+    <style type="text/css">
+        .container {
+            padding-top: 60px;
+        }
+        
+        .padding {
+            padding: 5px 0 20px 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-group">
+            <label>请选择文件</label>
+            <input type="file" id="file">
+            <div class="padding" id="box">
+                <!--<img src="" class="img-rounded img-responsive">-->
+            </div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 0%;" id="bar">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取元素
+        var file = document.querySelector("#file");
+        var bar = document.querySelector("#bar");
+        var box = document.querySelector("#box");
+
+        // 为文件添加事件
+        file.onchange = function() {
+            // 创建formData对象
+            var form = new FormData();
+
+            // 将file添加到FormData中
+            // 因为file的值可以有多个,将值封装成了一个files对象
+            form.append("myFile", this.files[0]);
+
+            // ajax
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", "http://localhost:3000/upload");
+            xhr.send(form);
+
+            // 进度条
+            xhr.upload.onprogress = function(ev) {
+                // ev.loaded:文件上传了多少 
+                // ev.total:文件总大小
+                var result = (ev.loaded / ev.total) * 100 + "%";
+                bar.style.width = result;
+                bar.innerHTML = result;
+            }
+
+            // ajax加载完成后
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    var result = JSON.parse(xhr.responseText);
+                    // 动态创建img
+                    var img = document.createElement("img");
+                    img.src = result.path;
+                    // 当img加载完成后
+                    img.onload = function() {
+                        box.appendChild(img);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="username">
+    <input type="text" id="pwd">
+    <input type="button" id="btn" value="提交">
+
+    <script>
+        // 获取节点
+        var btn = document.querySelector("#btn");
+        var username = document.querySelector("#username");
+        var pwd = document.querySelector("#pwd");
+
+        // 为按钮添加点击事件
+        btn.onclick = function() {
+
+            // 获取元素的值
+            var usernameValue = username.value;
+            var pwdValue = pwd.value;
+
+            // 创建ajax对象
+            var xhr = new XMLHttpRequest();
+
+            // 打开ajax
+            xhr.open("post", "http://localhost:3000/json");
+
+            // 如果传递的是json数据,那么值要改成：application/json
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            // 发送ajax,post参数要通过send方法发送
+            var obj = {
+                name: "zs",
+                age: 26
+            };
+            var newObj = JSON.stringify(obj);
+            // console.log(obj); // Object { name: "zs", age: 26 }
+            // console.log(newObj); // {"name":"zs","age":26}
+
+            // 发送数据
+            xhr.send(newObj);
+
+            // 接收服务器响应的数据
+            xhr.onload = function() {
+                console.log(xhr.responseText);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

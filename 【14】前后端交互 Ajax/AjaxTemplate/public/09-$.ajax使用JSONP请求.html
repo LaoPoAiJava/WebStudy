@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/js/jquery.min.js"></script>
+</head>
+
+<body>
+    <button id="btn">发送请求</button>
+    <script>
+        // 获取按钮
+        var btn = document.querySelector("#btn");
+
+        // Jquery的方式为按钮添加点击事件
+        $("#btn").on("click", function() {
+            // 发送jsonp请求
+            $.ajax({
+                url: "http://localhost:3000/jsonp",
+                // $.ajax()发送jsonp请求要是用dataType属性,值为：jsonp
+                //  dataType: "jsonp"
+                dataType: "jsonp",
+                // 改变服务器接收函数名称的key
+                // 默认为callback
+                // 当时用JSONP属性时，服务器的名称应也进行修改
+                jsonp: "cb",
+                // 接收服务器返回的函数调用
+                success: function(response) {
+                    console.log(response);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

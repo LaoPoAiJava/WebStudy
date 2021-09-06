@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/js/jquery.min.js"></script>
+</head>
+
+<body>
+    <button id="btn">发送请求</button>
+    <script>
+        // 获取按钮
+        var btn = document.querySelector("#btn");
+
+        // Jquery的方式为按钮添加点击事件
+        $("#btn").on("click", function() {
+            $.ajax({
+                type: "post",
+                url: "http://localhost:3000/base",
+                // 请求成功后执行的函数
+                success: function(response) {
+                    console.log(response);
+                },
+                // 请求失败后执行的函数
+                error: function(xhr) {
+                    console.log(xhr);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 创建ajax对象
+        var ajax = new XMLHttpRequest();
+
+        // 2. 打开ajax
+        ajax.open("get", "http://localhost:3000/resData");
+
+        // 3. 发送ajax
+        ajax.send();
+
+        // 4. 接收服务器响应数据
+        ajax.onload = function() {
+            // 服务器返回的是string类型
+            // 要是用JSON.parse()将其转换生成json
+            console.log(ajax.responseText); // 字符串
+            console.log(JSON.parse(ajax.responseText)); // json
+
+            // 获取json的值
+            var obj = JSON.parse(ajax.responseText);
+            var str = "<h2>" + obj.name + "</h2>";
+            document.body.innerHTML = str;
+        }
+    </script>
+</body>
+
+</html>

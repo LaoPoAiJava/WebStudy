@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 创建普通的html表单 -->
+    <form id="form">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <input type="button" id="btn" value="提交">
+    </form>
+
+    <script>
+        // formData是JavaScript内置的处理post请求的对象！！！
+        var btn = document.querySelector("#btn");
+        var form = document.querySelector("#form");
+
+        btn.onclick = function() {
+            // 创建formData对象
+            var formData = new FormData(form);
+
+            /*
+            ---------------fromData基本API---------------
+				get('key') 获取表单对象属性的值
+				set('key', 'value') 设置表单对象属性的值
+				delete('key') 删除表单对象属性中的值
+			*/
+            console.log(formData.get('username'));
+
+            // 如果设置的表单属性存在 将会覆盖属性原有的值
+            formData.set('username', 'itcast');
+            formData.append('username', 'itheima');
+            // 如果设置的表单属性不存在 将会创建这个表单属性
+            formData.set('age', 100);
+            // 删除用户输入的密码
+            // delete不只是把值删掉,整个属性都会删掉
+            formData.delete('password');
+            /*
+            ---------------fromData基本API---------------
+			*/
+
+            // 创建ajax对象
+            var xhr = new XMLHttpRequest();
+
+            // 打开ajax
+            xhr.open("post", "http://localhost:3000/formData");
+
+            // 发送
+            xhr.send(formData);
+
+            // 接收服务器响应数据
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    console.log(xhr.responseText);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

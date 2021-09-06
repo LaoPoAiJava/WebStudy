@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">提交Ajax</button>
+
+    <script>
+        // 获取节点
+        var btn = document.querySelector("#btn");
+
+        // 为按钮添加点击事件
+        btn.onclick = function() {
+
+            // 创建ajax对象
+            var xhr = new XMLHttpRequest();
+
+            // 打开ajax
+            xhr.open("get", "http://localhost:3000/error");
+
+            // 发送数据
+            xhr.send();
+
+            // 接收服务器响应的数据
+            xhr.onload = function() {
+                console.log(xhr.responseText);
+                // xhr.status:http响应状态码
+                if (xhr.status == 400) {
+                    alert("400 有错误");
+                }
+            }
+
+            // 当网络中断时会触发onerror事件
+            xhr.onerror = function() {
+                alert("网络连接中断，请检查网络");
+            }
+
+        }
+    </script>
+</body>
+
+</html>

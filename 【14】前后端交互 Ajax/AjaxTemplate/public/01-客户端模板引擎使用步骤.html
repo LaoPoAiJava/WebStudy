@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 1. 引入模板引擎的库文件 -->
+    <!-- 在服务器环境下,/要加在js前面 -->
+    <script src="/js/template-web.js"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <!-- 2. 准备art-template模板 -->
+    <script type="text/html" id="tpl">
+        <h2>{{username}} {{age}}</h2>
+    </script>
+
+    <!-- 3. 告诉模板引擎将哪个数据和哪个模板进行拼接 -->
+    <script type="text/javascript">
+        var html = template("tpl", {
+            username: "lz",
+            age: 26
+        });
+        document.getElementById("container").innerHTML = html;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/assets/bootstrap/dist/css/bootstrap.min.css">
+    <script src="/js/ajax.js"></script>
+
+    <style type="text/css">
+        p:not(:empty) {
+            padding: 15px;
+        }
+        
+        .container {
+            padding-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-group">
+            <label>邮箱地址</label>
+            <input type="email" class="form-control" placeholder="请输入邮箱地址" id="email">
+        </div>
+        <!-- 错误 bg-danger 正确 bg-success -->
+        <p id="info"></p>
+    </div>
+
+    <script>
+        // 获取元素
+        var emailText = document.querySelector("#email");
+        var info = document.querySelector("#info");
+
+        // 邮箱文本框失去焦点事件
+        emailText.onblur = function() {
+            // 验证邮箱是否符合规则
+            var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+            var emailValue = emailText.value;
+
+            // 如果不符合规则,显示提示信息
+            if (!reg.test(emailValue)) {
+                info.innerHTML = "输入的邮箱不符合规则,请重新输入!";
+                info.className = "bg-danger";
+                // 阻止程序向下执行
+                return;
+            }
+
+            // 如果符合规则,则继续运行
+            ajax({
+                type: "get",
+                url: "http://localhost:3000/verifyEmailAdress",
+                data: {
+                    email: emailValue
+                },
+                header: {
+                    'Content-Type': 'application/json'
+                },
+                success: function(result) {
+                    info.innerHTML = result.message;
+                    info.className = "bg-success";
+                },
+                error: function(result) {
+                    info.innerHTML = result.message;
+                    info.className = "bg-danger";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

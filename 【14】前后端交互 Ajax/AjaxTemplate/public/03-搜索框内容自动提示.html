@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/bootstrap/dist/css/bootstrap.min.css">
+    <style type="text/css">
+        .container {
+            padding-top: 150px;
+        }
+        
+        .list-group {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入搜索关键字" id="search">
+            <ul class="list-group" id="list-box">
+
+            </ul>
+        </div>
+    </div>
+
+    <script src="/js/ajax.js"></script>
+    <script src="/js/template-web.js"></script>
+
+    <!-- 定义模板 -->
+    <script type="txet/html" id="tpl">
+        {{each result}}
+        <li class="list-group-item">{{$value}}</li>
+        {{/each}}
+    </script>
+
+    <script>
+        // 获取元素
+        var searchText = document.querySelector("#search");
+        var listBox = document.querySelector("#list-box");
+
+        var timer = null;
+
+        // 当文本框输入文字的时候出发的事件
+        searchText.oninput = function() {
+
+            // 每次输入的时候清除上一次的定时器
+            clearTimeout(timer);
+
+            // 获取文本框的值
+            key = this.value;
+
+            console.log(key);
+
+            // 如果文本框被清空,那么不显示listBox
+            if (key.trim().length == 0) {
+                listBox.style.display = "none";
+                return;
+            }
+
+            // 定义一个计时器,防止请求过多
+            timer = setTimeout(function() {
+                // 调用ajax
+                ajax({
+                    type: "get",
+                    url: 'http://localhost:3000/searchAutoPrompt',
+                    data: {
+                        key: key
+                    },
+                    header: {
+                        'Content-Type': 'application/json'
+                    },
+                    success: function(result) {
+                        console.log(result);
+                        // 绑定模板
+                        var html = template("tpl", {
+                            result: result
+                        });
+                        // 将拼接好的字符串显示在页面中
+                        listBox.innerHTML = html;
+                        // 显示ul容器
+                        listBox.style.display = "block";
+                    }
+                });
+            }, 300);
+
+        }
+    </script>
+</body>
+
+</html>
