@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定指令</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            这2种方式显示的内容一样.
+            v-text没有“闪动”问题.
+         -->
+        <div>{{msg}}</div>
+        <div v-text="msg"></div>
+
+        <!-- 
+            可以带格式输出
+            v-html不太安全,本网站内部数据可以使用，来自第三方的数据不可以用。
+         -->
+        <div v-html="msg2"></div>
+
+        <!-- 可以显示原始内容:{{msg}} -->
+        <div v-pre>{{msg}}</div>
+
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        // 创建Vue对象
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                msg: "Hello Vue",
+                msg2: "<h2>Hello Vue</h2>"
+            }
+        });
+    </script>
+</body>
+
+</html>

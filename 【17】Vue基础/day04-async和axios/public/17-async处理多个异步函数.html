@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17-async处理多个异步函数</title>
+</head>
+
+<body>
+    <!-- 引入axios.js文件 -->
+    <script src="js/axios.js"></script>
+
+    <script>
+        async function fun() {
+            // 第一个异步函数
+            var info = await axios.get("http://localhost:3000/async1");
+            var ret = await axios.get("http://localhost:3000/async2?info=" + info.data);
+            return ret.data;
+        }
+        fun().then(function(ret) {
+            // 此时ret的值就是fun函数返回的ret.data的值
+            console.log(ret);
+        });
+    </script>
+</body>
+
+</html>

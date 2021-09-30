@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义按键修饰符</title>
+</head>
+
+<body>
+    <div id="app">
+        <form action="">
+            <div>
+                <!-- 只有按a的时候会执行handle函数,因为Vue.config.keyCodes.f1 = 65 -->
+                <input type="text" v-on:keyup.f1="handle" v-model='uname'>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        // 自定义按键修饰符
+        // Vue.config.keyCodes.自定义的修饰符名称 = keyCode值.
+        // 规则：对应的值必须是按键对应event.keyCode值.
+        Vue.config.keyCodes.f1 = 65
+
+        // 创建Vue对象
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                uname: ""
+            },
+            // vue的方法要定义在methods中
+            methods: {
+                // 点击提交按钮
+                handle: function(event) {
+                    console.log(event.keyCode);
+                },
+            }
+        });
+    </script>
+
+</body>
+
+</html>

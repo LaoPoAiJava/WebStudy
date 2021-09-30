@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-命名路由</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 2. 添加路由链接 -->
+        <router-link to="/user/1">User1</router-link>
+        <router-link to="/user/2">User2</router-link>
+        <!-- 访问命名路由 -->
+        <router-link :to="{name: 'user',params:{id:3}}">User3</router-link>
+        <router-link to="/register">Register</router-link>
+
+        <!-- 3. 添加路由填充位 -->
+        <router-view></router-view>
+
+    </div>
+
+    <!-- 引入vue.js -->
+    <script src="js/vue.js"></script>
+    <!-- 1. 引入vue-router库文件 -->
+    <script src="js/vue-router_3.0.2.js"></script>
+
+    <script>
+        // 4.定义路由组件
+        const User = {
+            // 2. 使用 props 接收路由参数
+            props: ["id", "name", "age"],
+            // 3. 如果是props传递的参数直接写即可
+            template: `<h1>动态路由匹配--id:{{id}}---user:{{name}}--{{age}}</h1>`
+        }
+        const Register = {
+            template: `<h1>Register组件</h1>`
+        }
+
+        // 5. 配置路由规则
+        const routers = new VueRouter({
+            routes: [{
+                // 访问/时,自动跳转到/user
+                path: "/",
+                redirect: "/user"
+            }, {
+                // 命名路由
+                name: "user",
+                // 动态路由规则可以使用:id
+                path: "/user/:id",
+                component: User,
+                // 1. 如果 props 是一个函数，则这个函数接收 route 对象为自己的形参
+                props: route => ({
+                    name: "zs",
+                    age: 26,
+                    id: route.params.id
+                })
+            }, {
+                path: "/register",
+                component: Register
+            }]
+        });
+
+        // 挂载到Vue根实例
+        const vm = new Vue({
+            el: "#app",
+            router: routers
+        });
+    </script>
+</body>
+
+</html>

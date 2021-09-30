@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性绑定</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            属性绑定语法：
+            <a v-bind:href='url'>跳转</a>
+            或
+            <a :href='url'>跳转</a>
+         -->
+        <a v-bind:href="url">百度</a>
+        <button @click="handle">切换URL</button>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                url: "https://www.baidu.com"
+            },
+            methods: {
+                handle: function() {
+                    this.url = "https://163.com"
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

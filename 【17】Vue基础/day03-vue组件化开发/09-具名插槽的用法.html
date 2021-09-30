@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-具名插槽的用法</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用插槽组件 -->
+        <!-- <base-layout>
+            <slot name="header">
+                <p>头部内容</p>
+                <p>头部内容</p>
+            </slot>
+            <slot>
+                <p>main内容</p>
+            </slot>
+            <slot name="footer">
+                <p>底部内容</p>
+                <p>底部内容</p>
+            </slot>
+        </base-layout> -->
+
+        <!-- 第二种用法 -->
+        <base-layout>
+            <template name="header">
+                <p>头部内容2</p>
+                <p>头部内容2</p>
+            </template>
+            <template>
+                <p>main内容2</p>
+            </template>
+            <template name="footer">
+                <p>底部内容2</p>
+                <p>底部内容2</p>
+            </template>
+        </base-layout>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        // 定义插槽
+        Vue.component("base-layout", {
+            template: `
+            <div>
+                <header>
+                    <slot name="header"></slot>
+                </header>
+                <main>
+                    <slot></slot>
+                </main>
+                <footer>
+                    <slot name="footer"></slot>
+                </footer>
+            </div>
+            `
+        });
+
+        var vue = new Vue({
+            el: "#app"
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-子组件向父组件传递信息</title>
+</head>
+
+<body>
+    <div id="app">
+        <div :style="{fontSize: fontSize +'px'}">{{msg}}</div>
+        <!-- 子组件向父组件传递数据,父组件要用$event接收,固定写法 -->
+        <menu-item @enlarge-text="handle($event)"></menu-item>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        // 注册组件
+        Vue.component("menu-item", {
+            props: [],
+            template: `
+            <div>
+                <div><button @click="$emit('enlarge-text',5)">点击字体变大</button></div>
+            </div>
+            `
+        });
+
+        // 创建对象
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                msg: "这是父类的数据",
+                fontSize: 15
+            },
+            methods: {
+                handle: function(val) {
+                    this.fontSize += val;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

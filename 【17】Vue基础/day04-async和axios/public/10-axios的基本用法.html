@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-axios的基本用法</title>
+</head>
+
+<body>
+
+    <!-- 引入axios.js文件 -->
+    <script src="js/axios.js"></script>
+
+    <script>
+        axios.get("http://localhost:3000/axios1")
+            .then(function(ret) {
+                // data是固定用法,获取响应回的值
+                // ret是一个对象,其中有很多属性,现在暂时只是用data属性
+                console.log(ret.data);
+
+            });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-axios响应结果</title>
+</head>
+
+<body>
+    <!-- 
+        响应结果的主要属性:
+            1. data:实际响应回来的数据
+            2. headers:响应头信息
+            3. status:响应状态码
+            4. statusText:响应状态信息
+
+     -->
+
+    <!-- 引入axios.js文件 -->
+    <script src="js/axios.js"></script>
+
+    <script>
+        axios.get("http://localhost:3000/getResponse")
+            .then(function(ret) {
+                console.log(ret.data);
+                console.log(ret.data.name);
+                console.log(ret.data.age);
+            });
+    </script>
+</body>
+
+</html>

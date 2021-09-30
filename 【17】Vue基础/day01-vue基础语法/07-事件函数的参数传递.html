@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件函数的参数传递</title>
+</head>
+
+<body>
+    <!-- 
+        1. 事件绑定的语法：
+            <input type=‘button' v-on:click='num++'/>
+            也可以简写成：
+            <input type=‘button' @click='num++'/>
+     -->
+    <div id="app">
+        <!-- 带参数 -->
+        <button @click="handle1(110)">handle(实参)</button>
+
+        <!-- 
+            带事件参数
+            事件参数必须写在参数的最后一个,并且名字固定为$event
+        -->
+        <!-- <button @click="handle2(110, $event)">handle(实参,事件)</button> -->
+        <button @click="handle2(110, $event)">handle(实参,事件)</button>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        // 创建Vue对象
+        var vue = new Vue({
+            el: "#app",
+            // vue的方法要定义在methods中
+            methods: {
+                handle1: function(arg) {
+                    console.log(arg);
+                },
+                handle2: function(arg, event) {
+                    console.log(arg);
+                    console.log(event);
+                    console.log(event.target.tagName);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-非父子组件间传值</title>
+</head>
+
+<body>
+
+    <!-- 父组件 -->
+    <div id="app">
+        <div>父组件</div>
+        <div>
+            <com-tom></com-tom>
+        </div>
+        <div>
+            <com-jerry></com-jerry>
+        </div>
+    </div>
+
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        // 创建事件中心
+        var hub = new Vue();
+
+        // 注册组件tom
+        Vue.component("com-tom", {
+            data: function() {
+                return {
+                    num: 0
+                }
+            },
+            template: `
+            <div>
+                <div>tom:{{num}}</div>
+                <div><button @click="handle">点击</button></div>
+            </div>
+            `,
+            methods: {
+                handle: function() {
+                    // 当点击tom的按钮就触发注册的事件
+                    hub.$emit("event-jerry", 1);
+                }
+            },
+            // 模板加载完成就可以触发
+            mounted: function() {
+                // 监听事件
+                hub.$on('event-tom', (val) => {
+                    this.num += val;
+                })
+            }
+        });
+
+        // 注册组件jerry
+        Vue.component("com-jerry", {
+            data: function() {
+                return {
+                    num: 0
+                }
+            },
+            template: `
+            <div>
+                <div>jerry:{{num}}</div>
+                <div><button @click="handle">点击</button></div>
+            </div>
+            `,
+            methods: {
+                handle: function() {
+                    // 当点击tom的按钮就触发注册的事件
+                    hub.$emit("event-tom", 2);
+                }
+            },
+            mounted: function() {
+                // 监听事件
+                hub.$on("event-jerry", (val) => {
+                    this.num += val;
+                });
+            }
+        });
+
+        // 创建vue对象
+        var vue = new Vue({
+            el: "#app"
+        });
+    </script>
+</body>
+
+</html>

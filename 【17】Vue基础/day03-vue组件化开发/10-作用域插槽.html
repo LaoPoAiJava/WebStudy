@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-作用域插槽</title>
+
+    <style>
+        .current {
+            font-style: italic;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <fruit-list :list="list">
+            <!-- 
+                通过slot-scope属性的值：mySlot来获取插槽中info的值
+             -->
+            <template slot-scope="mySlot">
+                <strong v-if="mySlot.info.id == 2" class="current">{{mySlot.info.name}}</strong>
+                <span v-else>{{mySlot.info.name}}</span>
+            </template>
+        </fruit-list>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        // 注册组件
+        Vue.component("fruit-list", {
+            props: ["list"],
+            template: `
+            <div>
+                <li :key="item.id" v-for="item in list">
+                    <slot :info="item">{{item.name}}</slot>
+                </li>
+            </div>
+            `
+        });
+
+        // 创建vue
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                list: [{
+                    id: 1,
+                    name: "西瓜"
+                }, {
+                    id: 2,
+                    name: "橘子"
+                }, {
+                    id: 3,
+                    name: "草莓"
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>

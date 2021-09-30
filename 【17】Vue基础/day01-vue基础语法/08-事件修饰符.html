@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符</title>
+</head>
+
+<body>
+    <!-- 
+        
+     -->
+    <div id="app">
+        <div @click="f1">
+            <!-- 
+                vue中阻止冒泡
+                <a v-on:click.stop="handle">跳转</a>
+            -->
+            <button @click.stop="f2">阻止冒泡</button>
+        </div>
+
+        <!-- 
+            vue阻止默认行为
+            <a v-on:click.prevent="handle">跳转</a>
+         -->
+        <div>
+            <a href="https://www.baidu.com" @click.prevent="f3">阻止默认行为</a>
+        </div>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        // 创建Vue对象
+        var vue = new Vue({
+            el: "#app",
+            // vue的方法要定义在methods中
+            methods: {
+                f1: function() {
+                    alert("冒泡到父类了哦");
+                },
+                f2: function(event) {
+                    // 原生的阻止冒泡事件
+                    // event.stopPropagation();
+                },
+                f3: function() {
+                    // 原生阻止默认行为
+                    // event.preventDefault();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

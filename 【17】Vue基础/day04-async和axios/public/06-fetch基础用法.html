@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-fetch基础用法</title>
+</head>
+
+<body>
+    <script>
+        fetch("http://localhost:3000/fdata").then(data => {
+            // text()方法属于fetchAPI的一部分,用于获取后台返回的数据.
+            // 返回值:Promise对象
+            // 返回的数据要在下一个then方法中接收
+            return data.text();
+        }).then(res => {
+            // 返回的数据要在这一个then方法中接收.
+            console.log(res);
+        });
+    </script>
+</body>
+
+</html>

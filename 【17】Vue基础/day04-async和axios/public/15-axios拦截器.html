@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15-axios拦截器</title>
+</head>
+
+<body>
+    <!-- 引入axios.js文件 -->
+    <script src="js/axios.js"></script>
+
+    <script>
+        // 定义请求拦截器
+        axios.interceptors.request.use(function(config) {
+            // 设置请求头
+            config.headers.mytoken = "hello";
+            // config必须return之后才会生效,必写
+            return config;
+        });
+
+        // 定义响应拦截器
+        axios.interceptors.response.use(function(res) {
+            // res返回的是一个对象
+            return res.data;
+        }, function(err) {
+            console.log(err);
+        });
+
+        // 发送请求
+        axios.get("http://localhost:3000/interceptors")
+            .then(function(ret) {
+                // console.log(ret.data);
+                // 如果响应拦截器已经处理过请求
+                console.log(ret);
+            }, function(err) {
+                console.log(err);
+            });
+    </script>
+</body>
+
+</html>

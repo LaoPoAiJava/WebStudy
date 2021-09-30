@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-局部组件</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <hello-world></hello-world>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        // HelloWorld是一个对象
+        var HelloWorld = {
+            data: function() {
+                return {
+                    msg: "HelloWorld"
+                }
+            },
+            template: "<div>{{msg}}</div>"
+        }
+
+        var vue = new Vue({
+            el: "#app",
+            components: {
+                // 短横线:驼峰式
+                "hello-world": HelloWorld
+            }
+        });
+    </script>
+</body>
+
+</html>

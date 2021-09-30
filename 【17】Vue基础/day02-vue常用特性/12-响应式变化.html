@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-响应式变化</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in list">{{item}}</li>
+        </ul>
+        <button @click="change">切换</button>
+        <div>{{person.name}}</div>
+        <div>{{person.age}}</div>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                list: ["西瓜", "草莓", "葡萄"],
+                person: {
+                    name: "ljm",
+                    age: 26
+                }
+            },
+            methods: {
+                change: function() {
+                    // 操作索引的方式不是响应式
+                    // this.list[0] = "哈密瓜";
+                }
+            }
+        });
+
+        // 参数1：要操作的数组
+        // 参数2：索引
+        // 参数3：将要设置的值
+        // 第一种方式：响应式操作数组
+        // vue.$set(vue.list, 1, "哈密瓜");
+        // 第二种方式：全局的写法
+        // Vue.set(vue.list, 1, "哈密瓜");
+
+        // 如果操作的是对象
+        // 参数1：要操作的对象
+        // 参数2：key
+        // 参数3：将要设置的值
+        // vue.$set(vue.person, "name", "tk");
+    </script>
+</body>
+
+</html>

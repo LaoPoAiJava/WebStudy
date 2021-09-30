@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-fetch发送post和put请求</title>
+</head>
+
+<body>
+    <!-- 
+        fetch发送post请求
+        1. 发送数据的形式有2种：
+            body:"name=zs&age=26"
+            json
+        2. 数据存放在body属性中
+        3. 必须设置请求头,放在headers属性中
+            (1)一般形式的数据
+            body:"name=zs&age=26"
+            headers: {"Content-Type": "application/x-www-form-urlencoded"}
+            (2)json数据
+
+     -->
+    <script>
+        // 发送一般形式的数据
+        // fetch("http://localhost:3000/books", {
+        //         method: "post",
+        //         // 发送a=b&c=d形式的请求
+        //         // 数据存放在body中
+        //         body: "name=zs&age=26",
+        //         // 发送post请求必须设置请求头
+        //         headers: {
+        //             "Content-Type": "application/x-www-form-urlencoded"
+        //         }
+        //     })
+        //     .then(function(data) {
+        //         return data.text();
+        //     }).then(function(res) {
+        //         console.log(res);
+        //     });
+
+        // 发送json形式的数据
+        // fetch("http://localhost:3000/books", {
+        //         method: "post",
+        //         body: JSON.stringify({
+        //             name: "json数据",
+        //             age: "18"
+        //         }),
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         }
+        //     })
+        //     .then(function(data) {
+        //         return data.text();
+        //     }).then(function(res) {
+        //         console.log(res);
+        //     });
+
+        // 发送PUT类型的数据
+        fetch("http://localhost:3000/books/1", {
+                method: "put",
+                body: JSON.stringify({
+                    name: "json数据",
+                    age: "18"
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(function(data) {
+                return data.text();
+            }).then(function(res) {
+                console.log(res);
+            });
+    </script>
+</body>
+
+</html>

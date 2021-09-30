@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-组件间数据交互(父传子)</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 子组件自己的数据 -->
+        <menu-item></menu-item>
+
+        <!-- 静态方式传递 -->
+        <!-- <menu-item title="我是父元素的值"></menu-item> -->
+
+        <!-- 动态方式传递 -->
+        <menu-item :title="myTitle"></menu-item>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        // 定义组件
+        Vue.component("menu-item", {
+            /*
+                通过props传递,props是一个数组
+            */
+            props: ["title"],
+            data: function() {
+                return {
+                    msg: "data存放的是子组件自己的数据"
+                }
+            },
+            template: "<div><div>{{msg}}</div><div>{{title}}</div></div>"
+        });
+
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                myTitle: "我是动态方式传递的父元素的值"
+            }
+        });
+    </script>
+</body>
+
+</html>

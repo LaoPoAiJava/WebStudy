@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向数据绑定</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            双向数据绑定语法
+            <input type='text' v-model='uname'/>
+        -->
+        <div v-text="msg"></div>
+        <div>
+            <input type="text" v-model="msg">
+        </div>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        // 创建Vue对象
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                msg: "Hello Vue"
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-自定义局部指令</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-color="msg">
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                msg: {
+                    color: "red"
+                }
+            },
+            // 自定义局部指令
+            directives: {
+                color: {
+                    bind: function(el, binding) {
+                        el.style.backgroundColor = binding.value.color;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

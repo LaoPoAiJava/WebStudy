@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件绑定的基本用法</title>
+</head>
+
+<body>
+    <!-- 
+        1. 事件绑定的语法：
+            <input type=‘button' v-on:click='num++'/>
+            也可以简写成：
+            <input type=‘button' @click='num++'/>
+     -->
+    <div id="app">
+        <div v-text="num"></div>
+
+        <!-- v-on:click -->
+        <button v-on:click="num++">v-on:click</button>
+        <!-- @click -->
+        <button @click="num++">@click</button>
+
+        <!-- 
+            @click="方法名" 
+            此种写法,事件默认为第一个参数,等同于handle($event)
+        -->
+        <button @click="handle">handle</button>
+
+        <!-- @click="方法名()" -->
+        <button @click="handle()">handle()</button>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        // 创建Vue对象
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                num: 0
+            },
+            // vue的方法要定义在methods中
+            methods: {
+                handle: function() {
+                    // this指向的就是vue这个对象
+                    console.log(this === vue); // true
+                    // 如果直接使用num++;会直接报错,因为在handle中没有声明num变量.
+                    this.num++;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

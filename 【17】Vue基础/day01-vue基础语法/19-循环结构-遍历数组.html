@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环结构-遍历数组</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>水果列表</div>
+        <!-- 
+            循环结构遍历数组:语法
+                <li v-for='item in list'>{{item}}</li>
+                <li v-for='(item,index) in list'>{{item}} + '---' +{{index}}</li>
+            key的作用：帮助Vue区分不同的元素，从而提高性能
+                <li :key='item.id' v-for='(item,index) in list'>{{item}} + '---' {{index}}</li>
+         -->
+        <ul>
+            <li v-for='item in fruits'>{{item}}</li>
+            <li v-for='(item, index) in fruits'>{{item + '---' + index}}</li>
+            <!-- 如果没有id字段,可以使用index -->
+            <li :key='item.id' v-for='(item) in myFruits'>
+                <span>{{item.ename}}</span>
+                <span>-----</span>
+                <span>{{item.cname}}</span>
+            </li>
+
+        </ul>
+    </div>
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+        // 循环结构-遍历数组
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                fruits: ['apple', 'orange', 'banana'],
+                myFruits: [{
+                    id: 1,
+                    ename: 'apple',
+                    cname: '苹果'
+                }, {
+                    id: 2,
+                    ename: 'orange',
+                    cname: '橘子'
+                }, {
+                    id: 3,
+                    ename: 'banana',
+                    cname: '香蕉'
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>

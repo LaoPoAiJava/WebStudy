@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据响应式</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 可以在控制台通过vue.msg=123修改msg的值 -->
+        <div v-text="msg"></div>
+
+        <!-- v-once:无法通过控制台修改info的值,只编译一次 -->
+        <div v-text="info" v-once></div>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        // 创建Vue对象
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                msg: "Hello Vue",
+                info: "Hello Info"
+            }
+        });
+    </script>
+</body>
+
+</html>

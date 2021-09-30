@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-自定义指令的基本用法</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用自定义指令时要加v-,即v-focus -->
+        <input type="text" v-focus>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        // 自定义指令
+        Vue.directive("focus", {
+            inserted: function(el) {
+                // el表示指令所绑定的元素
+                el.focus();
+            }
+        });
+
+        var vm = new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+
+</html>

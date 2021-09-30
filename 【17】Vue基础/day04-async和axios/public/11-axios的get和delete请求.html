@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-axios的get和delete请求</title>
+</head>
+
+<body>
+    <!-- 引入axios.js文件 -->
+    <script src="js/axios.js"></script>
+
+    <!-- delete与get几乎一模一样,不写demo了 -->
+    <script>
+        // axios:get url方式传递
+        // axios.get("http://localhost:3000/getUrlAxios?id=1")
+        //     .then(function(ret) {
+        //         console.log(ret.data);
+        //     });
+
+        // axios:get RESTful方式传递
+        // axios.get("http://localhost:3000/getRustAxios/2")
+        //     .then(function(ret) {
+        //         console.log(ret.data);
+        //     });
+
+        // axios:get 通过axios中的params对象传递
+        axios.get("http://localhost:3000/getParamsAxios", {
+                params: {
+                    id: 3
+                }
+            })
+            .then(function(ret) {
+                console.log(ret.data);
+            });
+    </script>
+</body>
+
+</html>

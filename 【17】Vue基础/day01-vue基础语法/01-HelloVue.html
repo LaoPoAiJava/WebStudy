@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- {{}}:插值表达式 -->
+        {{msg}}
+        <div>{{msg}}</div>
+    </div>
+    <!-- 
+        1. 引入vue.js文件
+        2. 创建Vue对象
+     -->
+    <script src="js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            // el:元素挂载的位置
+            el: "#app",
+            // data:模型数据
+            data: {
+                msg: "Hello Vue"
+            }
+        });
+    </script>
+</body>
+
+</html>

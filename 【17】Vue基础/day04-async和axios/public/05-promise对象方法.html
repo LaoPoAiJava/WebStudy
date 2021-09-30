@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-promise对象方法</title>
+</head>
+
+<body>
+    <!-- 
+        Promise.all()并发处理多个异步任务,所有任务都执行完成才能得到结果.
+        Promise.race()并发处理多个异步任务,只要有一个任务完成就能得到结果.
+     -->
+    <script>
+        function getPromise(url) {
+            return new Promise(function(resolve, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState != 4) return;
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        // 处理正常的情况
+                        resolve(xhr.responseText);
+                    } else {
+                        // 处理异常情况
+                        reject('服务器错误');
+                    }
+                };
+                xhr.open('get', url);
+                xhr.send(null);
+            });
+        }
+
+        var p1 = getPromise("http://localhost:3000/p1");
+        var p2 = getPromise("http://localhost:3000/p2");
+        var p3 = getPromise("http://localhost:3000/p3");
+
+        // Promise.all()并发处理多个异步任务,所有任务都执行完成才能得到结果.
+        // all方法的参数是一个数组类型
+        // Promise.all([p1, p2, p3]).then(function(data) {
+        //     console.log(data);
+        // });
+
+        // Promise.race()并发处理多个异步任务,只要有一个任务完成就能得到结果.
+        Promise.race([p1, p2, p3]).then(function(data) {
+            console.log(data);
+        });
+    </script>
+</body>
+
+</html>

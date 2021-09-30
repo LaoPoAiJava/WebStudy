@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-promise基本用法</title>
+</head>
+
+<body>
+    <!-- 
+        Promise的基本用法
+        1. Promise是一个对象,构造函数中接收的是一个函数,这个函数用于处理异步任务.
+        2. 这个函数中有resolve和reject两个参数且都为函数,用于处理成功和失败两种情况.
+        3. 通过p.then()获取处理结果.
+     -->
+    <script>
+        var p = new Promise(function(resolve, reject) {
+            // 模拟一个异步任务
+            setTimeout(function() {
+                var flag = true;
+                // var flag = false;
+                if (flag) {
+                    // 成功的情况
+                    resolve("成功了");
+                } else {
+                    // 失败的情况
+                    reject("报错了");
+                }
+            }, 1000);
+        });
+
+        // 获取处理结果
+        p.then(function(data) {
+            console.log(data);
+        }, function(info) {
+            console.log(info);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-cloak指令</title>
+
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        v-cloak指令:目的是解决插值表达式“闪动”问题.
+        v-cloak指令的用法:
+            1、在<style>标签中添加：
+                [v-cloak]{
+                display: none;
+            }
+            2、在插值表达式所在的标签中添加v-cloak指令
+        背后的原理：先通过样式隐藏内容，然后在内存中进行值的替换，替换好之后再显示最终的结果
+     -->
+    <div id="app" v-cloak>
+        {{msg}}
+    </div>
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                msg: "v-cloak指令"
+            }
+        });
+    </script>
+</body>
+
+</html>

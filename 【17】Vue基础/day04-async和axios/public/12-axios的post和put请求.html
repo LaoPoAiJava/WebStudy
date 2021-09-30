@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-axios的post和put请求</title>
+</head>
+
+<body>
+    <!-- 引入axios.js文件 -->
+    <script src="js/axios.js"></script>
+
+    <script>
+        // json方式传递
+        axios.post("http://localhost:3000/postJsonAxios", {
+                name: "lz",
+                pwd: "123"
+            })
+            .then(function(ret) {
+                console.log(ret.data);
+            });
+
+        // url方式传递
+        // 1. 创建URLSearchParams对象
+        var params = new URLSearchParams();
+        // append() 添加数据
+        params.append("name", "zs");
+        params.append("age", 16);
+        axios.post("http://localhost:3000/postUrlAxios", params)
+            .then(function(ret) {
+                console.log(ret.data);
+            });
+
+        // put请求
+        axios.put("http://localhost:3000/putJsonAxios", {
+                name: "lzz",
+                pwd: "1234"
+            })
+            .then(function(ret) {
+                console.log(ret.data);
+            });
+    </script>
+</body>
+
+</html>

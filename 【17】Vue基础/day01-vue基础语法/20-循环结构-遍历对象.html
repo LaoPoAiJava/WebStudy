@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环结构-遍历对象</title>
+</head>
+
+<body>
+    <!-- 
+    循环结构-遍历对象语法
+        <div v-for='(value, key, index) in object'></div>
+    
+    v-if和v-for结合使用
+        <div v-if='value==12' v-for='(value, key, index) in object'></div>
+     -->
+
+    <div id="app">
+        <div v-for='(v,k,i) in obj'>{{v + '---' + k + '---' + i}}</div>
+
+        <!-- 只输出v==13 -->
+        <!-- <div v-if='v==13' v-for='(v,k,i) in obj'>{{v + '---' + k + '---' + i}}</div> -->
+    </div>
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                obj: {
+                    uname: 'zhangsan',
+                    age: 13,
+                    gender: 'female'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

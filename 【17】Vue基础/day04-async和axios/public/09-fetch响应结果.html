@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-fetch响应结果</title>
+</head>
+
+<body>
+    <script>
+        // 接收json的第一种方式:json()
+        // fetch("http://localhost:3000/json", {
+        //     method: "get"
+        // }).then(function(data) {
+        //     // 接收json
+        //     return data.json();
+        // }).then(function(res) {
+        //     console.log(res);
+        //     console.log(res.name);
+        //     console.log(res.age);
+        // });
+
+        // 接收json的第二种方式
+        fetch("http://localhost:3000/json", {
+            method: "get"
+        }).then(function(data) {
+            // 接收json
+            return data.text();
+        }).then(function(res) {
+            console.log(res); // {"name":"lw","age":18}
+            // 要用JSON.parser()进行转换
+            var j = JSON.parse(res);
+            console.log(j); // Object { name: "lw", age: 18 }
+        });
+    </script>
+</body>
+
+</html>

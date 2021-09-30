@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-fetch发送get和delete请求</title>
+</head>
+
+<body>
+    <script>
+        // fetch发送带参数的get请求
+        fetch("http://localhost:3000/books?id=1", {
+            method: "get"
+        }).then(data => {
+            return data.text();
+        }).then(res => {
+            console.log(res);
+        });
+
+        // fetch发送RESTful风格的get请求
+        fetch("http://localhost:3000/books/2", {
+            method: "get"
+        }).then(data => {
+            return data.text();
+        }).then(res => {
+            console.log(res);
+        });
+
+        // fetch发送RESTful风格的delete请求
+        fetch("http://localhost:3000/books/3", {
+            method: "delete"
+        }).then(data => {
+            return data.text();
+        }).then(res => {
+            console.log(res);
+        });
+    </script>
+</body>
+
+</html>

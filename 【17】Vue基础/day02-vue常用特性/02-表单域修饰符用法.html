@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-表单域修饰符用法</title>
+</head>
+
+<body>
+    <!-- 
+        表单域修饰符:
+            number：转化为数值
+            trim：去掉开始和结尾的空格
+            lazy : 将input事件切换为change事件
+     -->
+    <div id="app">
+        <!-- number：转化为数值 -->
+        <input type="text" v-model.number="str">
+        <!-- trim：去掉开始和结尾的空格 -->
+        <input type="text" v-model.trim="info">
+        <!-- 
+            lazy : 将input事件切换为change事件
+            input事件:当输入数据时执行的事件
+            change事件:失去焦点时执行的事件
+        -->
+        <input type="text" v-model.lazy="msg">
+        <div>{{msg}}</div>
+        <button @click="handle">点击</button>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                str: "",
+                info: "",
+                msg: ""
+            },
+            methods: {
+                handle: function() {
+                    // console.log(this.str + 10);
+                    // console.log(this.info);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

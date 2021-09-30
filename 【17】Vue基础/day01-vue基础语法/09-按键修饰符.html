@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按键修饰符</title>
+</head>
+
+<body>
+    <div id="app">
+        <form action="">
+            <div>
+                用户名：
+                <!-- @keyup.delete:删除所有内容 -->
+                <input type="text" @keyup.delete='clearContent' v-model='uname'>
+            </div>
+            <div>
+                密码：
+                <!-- @keyup.enter:在密码框输入回车也可以触发事件 -->
+                <input type="text" @keyup.enter='handleSubmit' v-model='pwd'>
+            </div>
+            <div>
+                <input type="button" @click='handleSubmit' value="提交">
+            </div>
+        </form>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        // 创建Vue对象
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                uname: "",
+                pwd: ""
+            },
+            // vue的方法要定义在methods中
+            methods: {
+                // 点击提交按钮
+                handleSubmit: function() {
+                    console.log(this.uname + "=" + this.pwd);
+                },
+                // 删除所有内容
+                clearContent: function() {
+                    this.uname = "";
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

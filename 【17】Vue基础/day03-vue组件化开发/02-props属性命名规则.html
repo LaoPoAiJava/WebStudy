@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-props属性命名规则</title>
+</head>
+
+<body>
+
+    <!-- 
+        props属性名规则
+            1. 在props和template中使用驼峰，模板中使用短横线.
+            2. 字符串形式的模板中没有这个限制.
+     -->
+    <div id=app>
+        <!-- 动态方式传递 -->
+        <menu-item :menu-title="myTitle"></menu-item>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        // 定义组件
+        Vue.component("test-item", {
+            // 在props中使用驼峰，模板中使用短横线.
+            props: ["testTitle"],
+            template: "<div>{{testTitle}}</div>"
+        });
+        Vue.component("menu-item", {
+            // 在props中使用驼峰，模板中使用短横线.
+            props: ["menuTitle"],
+            // 字符串形式的模板中既可以使用驼峰式也可以使用短横线式
+            template: "<div>{{menuTitle}}<div><test-item testTitle='hello'></test-item></div></div>"
+        });
+
+        // vue对象
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                myTitle: "props属性命名规则"
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-计算属性</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{msg}}</div>
+        <div>{{reverseString}}</div>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                msg: "Hello"
+            },
+            // 计算属性
+            computed: {
+                // 计算属性与方法的区别:
+                // 1. 计算属性是基于它们的依赖进行缓存的,如果msg的改变才重新执行,否则都是从缓存读取数据.
+                // 2. 方法不存在缓存.
+
+                // 属性名：function(){}
+                reverseString: function() {
+                    // 计算属性要有return
+                    return this.msg.split("").reverse().join("");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

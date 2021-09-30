@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>样式绑定之class绑定对象</title>
+
+    <style type="text/css">
+        .active {
+            border: 1px solid red;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .error {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            class样式处理语法：
+            <div v-bind:class="[activeClass, errorClass]"></div>
+         -->
+        <div v-bind:class="[activeClass,errorClass]">
+            测试样式
+        </div>
+        <button @click="handle">清除样式</button>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                activeClass: "active",
+                errorClass: "error"
+            },
+            methods: {
+                handle: function() {
+                    this.activeClass = "";
+                    this.errorClass = "";
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

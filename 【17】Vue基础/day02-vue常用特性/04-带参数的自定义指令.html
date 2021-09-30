@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-带参数的自定义指令</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-color="msg">
+    </div>
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+
+    <script>
+        Vue.directive("color", {
+            // el:绑定的元素
+            // binding:参数,封装的一个对象
+            bind: function(el, binding) {
+                // 改变这个元素的背景色
+                el.style.backgroundColor = binding.value.color;
+            }
+        });
+
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                msg: {
+                    color: "red"
+                }
+            },
+            methods: {
+
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-props属性值类型</title>
+</head>
+
+<body>
+    <!-- 
+        props属性值类型:
+            字符串 String
+            数值 Number
+            布尔值 Boolean
+            数组 Array
+            对象 Object
+     -->
+    <div id="app">
+        <!-- 
+            pnum="12",12是String类型.
+            :pnum="12",是Number类型.
+         -->
+        <menu-item :pstr="pstr" :pnum="12" :pbool="true" :parr="parrs" :pobj="pobjs"></menu-item>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        // 组件
+        Vue.component("menu-item", {
+            props: ["pstr", "pnum", "pbool", "parr", "pobj"],
+            template: `
+            <div>
+                <div>{{pstr}}</div>
+                <div>{{pnum}}</div>
+                <div>{{pbool}}</div>
+                <div>{{parr}}</div>
+                <div>{{pobj}}</div>
+            </div>
+            `
+        });
+
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                pstr: "Hello",
+                parrs: ["a", "b", "c"],
+                pobjs: {
+                    name: "lw",
+                    age: 26
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

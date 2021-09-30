@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-promise常用API</title>
+</head>
+
+<body>
+    <script>
+        function getPromise() {
+            return new Promise(function(reslove, reject) {
+                setTimeout(function() {
+                    // reslove("成功");
+                    // reject("报错");
+                }, 1000);
+            });
+        }
+
+        // 第一种写法
+        // getPromise()
+        //     .then(function(data) {
+        //         // reslove()成功的信息会传递到then方法中
+        //         console.log(data);
+        //     })
+        //     .catch(function(data) {
+        //         // reject()失败的信息会传递到catch方法中
+        //         console.log(data);
+        //     })
+        //     .finally(function() {
+        //         // 会等reslove和reject执行完之后，再执行
+        //         // 并且无论成功或者失败都会执行
+        //         console.log("最终执行的方法");
+        //     });
+
+        // 第二种写法
+        // then(函数1,函数2):第一个参数是处理成功的情况,第二个参数是处理失败的情况
+        getPromise()
+            .then(function(data) {
+                console.log(data);
+            }, function(data) {
+                console.log(data);
+            });
+    </script>
+</body>
+
+</html>

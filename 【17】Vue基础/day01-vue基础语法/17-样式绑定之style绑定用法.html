@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>样式绑定之style绑定用法</title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-bind:style='{border: borderStyle, width: widthStyle, height: heightStyle}'></div>
+        <div v-bind:style='objStyles'></div>
+        <div v-bind:style='[objStyles, overrideStyles]'></div>
+    </div>
+
+    <!-- 引入vue -->
+    <script src="js/vue.js"></script>
+
+    <script>
+        // 样式绑定之内联样式Style：
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                borderStyle: "1px solid blue",
+                widthStyle: "200px",
+                heightStyle: "200px",
+                objStyles: {
+                    border: "1px solid red",
+                    width: "100px",
+                    height: "100px"
+                },
+                // 如果有重复的样式会覆盖之前的样式
+                overrideStyles: {
+                    width: "300px"
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
